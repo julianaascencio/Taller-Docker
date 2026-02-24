@@ -21,6 +21,7 @@ El objetivo de este taller es aprender el uso de Docker para la ejecución de co
 
 Docker fue instalado utilizando Docker Desktop en Windows.
 Se verificó la instalación ejecutando los siguientes comandos:
+
 ![Verificación Docker](instalacion-docker.png)
 
 
