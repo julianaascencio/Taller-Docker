@@ -25,14 +25,17 @@ Se verificó la instalación ejecutando los siguientes comandos:
 ![Verificación Docker](instalacion-docker.png)
 
 
-## Punto 1.a – Ejecución de video ASCII en Docker
+## Punto 1.a – Ejecución de contenedores Docker
 ## ¿Qué se hizo?
 En este punto se ejecutó un contenedor Docker que reproduce un video
 utilizando caracteres ASCII directamente en la terminal.
 
 ## ¿Cómo se hizo?
-Para ello se utilizó el siguiente comando:
 
+Para la ejecución del video en formato ASCII se utilizó un contenedor Docker
+basado en la imagen `wernight/funbox`, ejecutando el siguiente comando:
+
+bash
 docker run --rm -it wernight/funbox cvlc --no-audio -V caca /examples/countdown.mp4
 
 ![Comando video ASCCI](comando-video-ASCIIa.png)
