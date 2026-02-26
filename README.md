@@ -74,7 +74,7 @@ Se creó una máquina virtual con las siguientes características:
 
 - Aceleración gráfica: habilitada
 
-# Configuración de red
+### 2.Configuración de red
 
 La máquina virtual se configuró con Adaptador NAT, lo que permite acceso a Internet sin configuraciones adicionales.
 
@@ -94,7 +94,7 @@ y se evidencia que hay ping sin perdida de paquetes
 
 ![Verificacion de conexion a internet ](ping.png)
 
-### 2.Instalación de Docker en la Máquina Virtual
+### 3.Instalación de Docker en la Máquina Virtual
 Se actualizó el sistema e instaló Docker desde los repositorios oficales de Ubuntu con los siguientes comandos 
 
 ```bash
@@ -117,7 +117,7 @@ Como resultado, se obtuvo el mensaje "Hello from Docker!", confirmando que el de
 
 ![Docker en ubuntu](docker-en-ubuntu.png)
 
-# Descarga de la imagen base de ROS
+### 4.Descarga de la imagen base de ROS
 Se descargó la imagen oficial de ROS Noetic con soporte completo para escritorio y simulación
 
 ```bash
@@ -125,7 +125,7 @@ docker pull osrf/ros:noetic-desktop-full
 ```
 ![Descarga de imagen ROS](descarga-imagen.png)
 
-# Creación del Dockerfile para ROS y Gazebo
+### 5.Creación del Dockerfile para ROS y Gazebo
 Se creó un archivo llamado Dockerfile-ros para construir una imagen personalizada con TurtleBot3 y Gazebo.
 
 ```bash
@@ -144,13 +144,13 @@ CMD ["bash"]
 ```
 ![Dockerfile de ROZ y Gazebo](Dockerfile-ros.png)
 
-### 3.Construcción de la imagen Docker
+### 6.Construcción de la imagen Docker
 Se construyó la imagen personalizada a partir del Dockerfile.
 
 ```bash
 sudo docker build -t ros-gazebo -f Dockerfile-ros .
 ```
-# Ejecución del contenedor con soporte gráfico
+### 7.Ejecución del contenedor con soporte gráfico
 Para permitir la visualización de Gazebo desde el contenedor se habilitó el acceso al servidor X11
 
 ```bash
@@ -168,7 +168,7 @@ sudo docker run -it --rm \
 ```
 ![Contenedor](contenedor.png)
 
-### 4.Ejecución de la simulación en Gazebo
+### 8.Ejecución de la simulación en Gazebo
 Dentro del contenedor se inicializo ROS y lanzó el entorno de simulación
 
 ```bash
