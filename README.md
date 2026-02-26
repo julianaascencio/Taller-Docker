@@ -35,9 +35,9 @@ utilizando caracteres ASCII directamente en la terminal.
 Para la ejecución del video en formato ASCII se utilizó un contenedor Docker
 basado en la imagen `wernight/funbox`, ejecutando el siguiente comando:
 
-bash
+```bash
 docker run --rm -it wernight/funbox cvlc --no-audio -V caca /examples/countdown.mp4
-
+```
 ![Comando video ASCCI](comando-video-ASCIIa.png)
 
 ## ¿Qué se obtuvo?
