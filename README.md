@@ -84,7 +84,7 @@ Se realiza instalación del sistema operativo Ubuntu 24.04.3 desktop
 
 ![Instalación Iso](instalacion-ubuntu.png)
 
-Se realiza prueva de conectividad de la MV a Internet con los siguientes comandos 
+Se realiza prueba de conectividad de la MV a Internet con los siguientes comandos 
 
 ```bash
 ping -c 3 8.8.8.8
