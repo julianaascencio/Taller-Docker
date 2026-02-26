@@ -1,4 +1,4 @@
-### Taller-Docker
+# Taller-Docker
 Primer taller de Docker, ROS y redes
 
 ## Integrantes
@@ -53,14 +53,14 @@ la ejecución, lo que evita dejar contenedores innecesarios en el sistema.
 [Ver video ASCII en Docker](video-ascii.mp4)
 
 
-### Punto 1.b- Dcoker + ROS + Gazebo
+# Punto 1.b- Dcoker + ROS + Gazebo
 
 Simulación de un TurtleBot3 en Gazebo
 En este punto se utilizó Docker para ejecutar ROS Noetic junto con Gazebo, con el objetivo de simular un robot TurtleBot3 en un entorno gráfico, validando la correcta integración entre contenedores Docker, ROS y visualización por X11.
 
 ## Preparación del entorno
 
-# 1.Configuración de la Máquina Virtual
+### 1.Configuración de la Máquina Virtual
 
 Se creó una máquina virtual con las siguientes características:
 
@@ -94,7 +94,7 @@ y se evidencia que hay ping sin perdida de paquetes
 
 ![Verificacion de conexion a internet ](ping.png)
 
-### Instalación de Docker en la Máquina Virtual
+### 2.Instalación de Docker en la Máquina Virtual
 Se actualizó el sistema e instaló Docker desde los repositorios oficales de Ubuntu con los siguientes comandos 
 
 ```bash
@@ -144,7 +144,7 @@ CMD ["bash"]
 ```
 ![Dockerfile de ROZ y Gazebo](Dockerfile-ros.png)
 
-# Construcción de la imagen Docker
+### 3.Construcción de la imagen Docker
 Se construyó la imagen personalizada a partir del Dockerfile.
 
 ```bash
@@ -168,7 +168,7 @@ sudo docker run -it --rm \
 ```
 ![Contenedor](contenedor.png)
 
-# Ejecución de la simulación en Gazebo
+### 4.Ejecución de la simulación en Gazebo
 Dentro del contenedor se inicializo ROS y lanzó el entorno de simulación
 
 ```bash
