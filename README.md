@@ -117,3 +117,68 @@ Como resultado, se obtuvo el mensaje "Hello from Docker!", confirmando que el de
 
 ![Docker en ubuntu](docker-en-ubuntu.png)
 
+## Descarga de la imagen base de ROS
+Se descargó la imagen oficial de ROS Noetic con soporte completo para escritorio y simulación
+
+```bash
+docker pull osrf/ros:noetic-desktop-full
+```
+![Descarga de imagen ROS](descarga-imagen.png)
+
+## Creación del Dockerfile para ROS y Gazebo
+Se creó un archivo llamado Dockerfile-ros para construir una imagen personalizada con TurtleBot3 y Gazebo.
+
+```bash
+FROM osrf/ros:noetic-desktop-full
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && apt-get install -y \
+    ros-noetic-turtlebot3 \
+    ros-noetic-turtlebot3-gazebo \
+    && rm -rf /var/lib/apt/lists/*
+
+ENV TURTLEBOT3_MODEL=burger
+
+CMD ["bash"]
+```
+![Dockerfile de ROZ y Gazebo](Dockerfile-ros.png)
+
+## Construcción de la imagen Docker
+Se construyó la imagen personalizada a partir del Dockerfile.
+
+```bash
+sudo docker build -t ros-gazebo -f Dockerfile-ros .
+```
+## Ejecución del contenedor con soporte gráfico
+Para permitir la visualización de Gazebo desde el contenedor se habilitó el acceso al servidor X11
+
+```bash
+xhost +local:docker
+```
+
+Luego se ejecutó el contenedor
+
+```bash
+sudo docker run -it --rm \
+  --name ros-gazebo \
+  -e DISPLAY=$DISPLAY \
+  -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
+  ros-gazebo
+```
+![Contenedor](contenedor.png)
+
+## Ejecución de la simulación en Gazebo
+Dentro del contenedor se inicializo ROS y lanzó el entorno de simulación
+
+```bash
+source /opt/ros/noetic/setup.bash
+export TURTLEBOT3_MODEL=burger
+roslaunch turtlebot3_gazebo turtlebot3_world.launch
+```
+
+![Simulación](tourtlebot3-gazebo.png)
+
+Se logró configurar exitosamente una máquina virtual con Ubuntu, instalar Docker y ejecutar una simulación gráfica de TurtleBot3 en Gazebo, utilizando ROS Noetic dentro de un contenedor Docker.
+
+Esta configuración demuestra el uso de Docker como herramienta para desplegar entornos robóticos complejos de manera portable y reproducible.
